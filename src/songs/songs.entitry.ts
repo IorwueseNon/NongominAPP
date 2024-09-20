@@ -1,0 +1,38 @@
+import{
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Artist } from '../artists/artists.entity';
+import { Playlist } from '../playlists/playlists.entitiy';
+
+@Entity('songs')
+export class Song {
+  @PrimaryGeneratedColumn('increment')
+  id: number;
+
+  @Column('')
+  title: string;
+
+  // @Column("varchar",{array:true})
+  // artists:string[]
+
+  @Column('date')
+  releaseDate: Date;
+
+  @Column('time')
+  duration: Date;
+
+  @Column('text')
+  lyrics: string;
+
+  @ManyToMany(() => Artist, (artist) => artist.songs)
+  @JoinTable({ name: 'songs_artists' })
+  artists: Artist[];
+
+  @ManyToOne(() => Playlist, (playList) => playList.songs)
+  playList: Playlist;
+}

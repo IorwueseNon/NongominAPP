@@ -1,0 +1,20 @@
+####
+GET http://localhost:3000
+
+###
+GET http://localhost:3000/songs/
+
+###
+POST http://localhost:3000/songs
+Content-Type: "application/json"
+{
+    "title":"Lasting love",
+    "artists":[
+      "martin",
+      "john",
+      "sagla"
+    ],
+    "releaseDate":"2022-09-29",
+    "duration":"2:34",
+    "lyrics":"i am a boy that has money and bynGod grace will spend all of it like a boss and be the best i can bve so help me God yeahhhh"
+}
