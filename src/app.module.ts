@@ -20,7 +20,7 @@ import { ArtistsModule } from './artists/artists.module';
     UsersModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
-      database: 'sportify-clone',
+      database: 'sportify-clone2',
       host: 'localhost',
       port: 5432,
       username: 'postgres',

@@ -6,11 +6,15 @@ import { JwtService } from '@nestjs/jwt';
 import { ArtistsService } from 'src/artists/artists.service';
 import { Enable2FaType, PayloadType } from './dto/payload.type';
 import * as speakeasy from "speakeasy"
+import { User } from 'src/users/users.entity';
 @Injectable()
 export class AuthService {
     constructor(private userService: UsersService, private jwtService:JwtService,private artistService:ArtistsService) {}
     
-    async login(loginDTO: LoginDTO): Promise<{accesstoken:string}> {
+    async login(loginDTO: LoginDTO): Promise<{accesstoken:string}|{
+        validate2FA: string;
+        message:string
+     }> {
     const user = await this.userService.findOne(loginDTO); // 1.
     const passwordMatched = await bcrypt.compare(
     loginDTO.password,
@@ -21,10 +25,15 @@ export class AuthService {
     delete user.password; // 4.
     const payload:PayloadType ={email:user.email,userId:user.id}
     const artist = await this.artistService.findArtist(user.id); // 2
-if (artist) {
-// 3
-payload.artistId = artist.id;
-}
+    if (artist) {
+        // 3
+        payload.artistId = artist.id;
+        }
+    if(user.enable2Fa && user.twoFaSecret)
+       return{
+          validate2FA:"http://localhost:3000/auth/validate-2fa",
+          message:"please send the one time token from google anthentification app"
+       }
 
     return {
         accesstoken:this.jwtService.sign(payload)
@@ -51,7 +60,7 @@ payload.artistId = artist.id;
      const verified = speakeasy.totp.verify({
         secret: user.twoFaSecret,
         token:token,
-        encoding:'base32'
+        encoding:'base32',
      })
      if(verified){
         return {verified:true}
@@ -59,5 +68,13 @@ payload.artistId = artist.id;
         return{verified:false}
      }
     }
+    async validateUserByApiKey(apiKey: string): Promise<User> {
+      try {
+         return await this.userService.findByApiKey(apiKey)
+      } catch (error) {
+         console.log(`error is in auth Services:${error}`)
+      }
+      
+      }
 
 }

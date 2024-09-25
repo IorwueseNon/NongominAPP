@@ -34,4 +34,7 @@ export class User {
 
   @OneToMany(() => Playlist, (playList) => playList.songs)
   playList: Playlist[];
+
+  @Column()
+  apikey:string
 }

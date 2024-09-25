@@ -18,3 +18,44 @@ Content-Type: "application/json"
     "duration":"2:34",
     "lyrics":"i am a boy that has money and bynGod grace will spend all of it like a boss and be the best i can bve so help me God yeahhhh"
 }
+###
+POST  http://localhost:3000/auth/signUp
+Content-Type: application/json
+
+{
+"firstName": "sam",
+"lastName": "oven",
+"email": "sam13@gmail.com",
+"password": "123456"
+}
+###api key sam13 : c4d3df4e-4527-47c3-8095-967a665d61d4
+GET  http://localhost:3000/auth/profile
+Authorization:Bearer c4d3df4e-4527-47c3-8095-967a665d61d4
+
+
+###
+POST http://localhost:3000/auth/login
+Content-Type:application/json
+
+{
+ "email":"haryterhemen@gmail.com",
+ "password":"1234"
+}
+
+###
+POST http://localhost:3000/auth/validate-2fa
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imhhcnl0ZXJoZW1lbkBnbWFpbC5jb20iLCJ1c2VySWQiOjEsImlhdCI6MTcyNjgzMjM2MSwiZXhwIjoxNzI2OTE4NzYxfQ.fBDfYqLawBph2ODduCkEbCuaAVI-xbXCQg8dvanieAI
+
+{
+  "token":"643782"
+}
+
+
+###
+GET http://localhost:3000/auth/disable-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imhhcnl0ZXJoZW1lbkBnbWFpbC5jb20iLCJ1c2VySWQiOjEsImlhdCI6MTcyNzIwNjYyNywiZXhwIjoxNzI3MjkzMDI3fQ.Y56hz20bZdBqC9XzxMJwR-GLEFoOYx3N0MKjMTmFQRs
+
+###
+GET http://localhost:3000/auth/enable-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imhhcnl0ZXJoZW1lbkBnbWFpbC5jb20iLCJ1c2VySWQiOjEsImlhdCI6MTcyNzIwNjYyNywiZXhwIjoxNzI3MjkzMDI3fQ.Y56hz20bZdBqC9XzxMJwR-GLEFoOYx3N0MKjMTmFQRs
