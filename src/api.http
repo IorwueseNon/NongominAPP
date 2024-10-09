@@ -44,7 +44,7 @@ Content-Type:application/json
 
 ###
 POST http://localhost:3000/auth/validate-2fa
-Content-Type: application/json
+Content-Type: application/jsongit add .
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imhhcnl0ZXJoZW1lbkBnbWFpbC5jb20iLCJ1c2VySWQiOjEsImlhdCI6MTcyNjgzMjM2MSwiZXhwIjoxNzI2OTE4NzYxfQ.fBDfYqLawBph2ODduCkEbCuaAVI-xbXCQg8dvanieAI
 
 {

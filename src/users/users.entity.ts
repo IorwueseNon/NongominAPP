@@ -5,7 +5,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Playlist } from '../playlists/playlists.entitiy';
+import { Playlist } from '../playlists/playlists.entity';
 import { Exclude } from 'class-transformer';
 
 @Entity('users')
@@ -32,9 +32,13 @@ export class User {
   @Column({default:false , type:'boolean'})
   enable2Fa:boolean
 
+  @Column()
+  apikey:string
+
+  @Column()
+  phone:string
+
   @OneToMany(() => Playlist, (playList) => playList.songs)
   playList: Playlist[];
 
-  @Column()
-  apikey:string
 }

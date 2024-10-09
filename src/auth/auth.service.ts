@@ -68,13 +68,8 @@ export class AuthService {
         return{verified:false}
      }
     }
-    async validateUserByApiKey(apiKey: string): Promise<User> {
-      try {
-         return await this.userService.findByApiKey(apiKey)
-      } catch (error) {
-         console.log(`error is in auth Services:${error}`)
-      }
-      
-      }
-
+    async validateUserByApiKey(apiKey:string){
+      const user = await this.userService.findByApiKey(apiKey)
+      return user
+    }
 }

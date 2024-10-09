@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import{ Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, UpdateResult } from 'typeorm';
 import { CreateUserDTO } from './dtos/create-user.dto';
@@ -34,18 +34,18 @@ export class UsersService {
     }
     return user;
     }
-  async findOneById(id:number):Promise<User>{
+async findOneById(id:number):Promise<User>{
      const user = await this.userRepository.findOneBy({id:id})
      if(!user){
        throw new UnauthorizedException("could not find user")
      }
      return user
   }
-  async updateSecretKey(id:number,secret:string):Promise<UpdateResult>{
+async updateSecretKey(id:number,secret:string):Promise<UpdateResult>{
       const user = await this.userRepository.update({id:id},{twoFaSecret:secret,enable2Fa:true})
       return user
   }
-  async disable2Fa(userId:number){
+async disable2Fa(userId:number){
     return this.userRepository.update({id:userId},{enable2Fa:false,twoFaSecret:""})
 }
 async findByApiKey(apikey: string): Promise<User> {

@@ -5,7 +5,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Song } from '../songs/songs.entitry';
+import { Song } from '../songs/songs.entity';
 import { User } from '../users/users.entity';
 
 @Entity('playlists')

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Song } from './songs.entitry';
+import { Song } from './songs.entity';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 import { CreateSongsDto } from './dto/create-songs-dto';
 import { UpdateSongDto } from './dto/update-song-dto';
@@ -17,8 +17,7 @@ export class SongsService {
     @InjectRepository(Song) private songRepository: Repository<Song>,
     @InjectRepository(Artist) private artistRepository: Repository<Artist>,
   ) {}
-  //local database
-  //local songs array
+  
   async create(songDTO: CreateSongsDto): Promise<Song> {
     const song = new Song();
     song.title = songDTO.title;
