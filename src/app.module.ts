@@ -9,8 +9,10 @@ import { PlayListModule } from './playlists/playList.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { ArtistsModule } from './artists/artists.module';
-import { dataSourceOptions } from 'db/data-source';
+import { typeOrmAsyncConfig } from 'db/data-source';
 import { SeedModule } from './seed/seed.module';
+import { ConfigModule } from '@nestjs/config';
+import configuration from './configuration/configuration';
 
 
 @Module({
@@ -19,7 +21,12 @@ import { SeedModule } from './seed/seed.module';
     PlayListModule,
     AuthModule,
     UsersModule,
-    TypeOrmModule.forRoot(dataSourceOptions),
+    TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
+    ConfigModule.forRoot({
+      envFilePath:['.env.development','.env.production'],
+      isGlobal:true,
+      load:[configuration]
+    }),
     AuthModule,
     UsersModule,
     ArtistsModule,

@@ -7,9 +7,10 @@ import { ArtistsService } from 'src/artists/artists.service';
 import { Enable2FaType, PayloadType } from './dto/payload.type';
 import * as speakeasy from "speakeasy"
 import { User } from 'src/users/users.entity';
+import { ConfigService } from '@nestjs/config';
 @Injectable()
 export class AuthService {
-    constructor(private userService: UsersService, private jwtService:JwtService,private artistService:ArtistsService) {}
+    constructor(private userService: UsersService, private jwtService:JwtService,private artistService:ArtistsService,private configService:ConfigService) {}
     
     async login(loginDTO: LoginDTO): Promise<{accesstoken:string}|{
         validate2FA: string;
@@ -71,5 +72,12 @@ export class AuthService {
     async validateUserByApiKey(apiKey:string){
       const user = await this.userService.findByApiKey(apiKey)
       return user
+    }
+
+    test(){
+      console.log(this.configService)
+      return{
+         port:this.configService.get<number>("port")
+      }
     }
 }

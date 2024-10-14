@@ -21,7 +21,7 @@ export  const seedData =async (manager:EntityManager):Promise<void>=>{
      user.email = faker.internet.email()
      user.password = encryptPassword
      user.apikey  = uuid4()
-     user.phone = faker.phone.number()
+  
 
      await manager.getRepository(User).save(user)
   }
@@ -36,7 +36,6 @@ export  const seedData =async (manager:EntityManager):Promise<void>=>{
     user.email = faker.internet.email()
     user.password = encryptPassword
     user.apikey  = uuid4()
-    user.phone = faker.phone.number()
     
     const artist = new Artist()
     artist.user = user 
@@ -53,7 +52,6 @@ export  const seedData =async (manager:EntityManager):Promise<void>=>{
     user.email = faker.internet.email();
     user.password = encryptedPassword;
     user.apikey = uuid4();
-    user.phone = faker.phone.number()
     const playList = new Playlist();
     playList.name = faker.music.genre();
     playList.user = user;

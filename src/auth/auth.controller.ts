@@ -57,4 +57,8 @@ msg: 'authenticated with api key',
 user: req.user,
 };
 }
+@Get("test")
+test(){
+   return this.authService.test()
+}
 }

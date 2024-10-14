@@ -23,9 +23,9 @@ POST  http://localhost:3000/auth/signUp
 Content-Type: application/json
 
 {
-"firstName": "sam",
-"lastName": "oven",
-"email": "sam13@gmail.com",
+"firstName": "samiy",
+"lastName": "ovenm",
+"email": "lam13@gmail.com",
 "password": "123456"
 }
 ###api key sam13 : c4d3df4e-4527-47c3-8095-967a665d61d4
@@ -58,4 +58,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imhhcnl0Z
 
 ###
 GET http://localhost:3000/auth/enable-2fa
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imhhcnl0ZXJoZW1lbkBnbWFpbC5jb20iLCJ1c2VySWQiOjEsImlhdCI6MTcyNzIwNjYyNywiZXhwIjoxNzI3MjkzMDI3fQ.Y56hz20bZdBqC9XzxMJwR-GLEFoOYx3N0MKjMTmFQRs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imhhcnl0ZXJoZW1lbkBnbWFpbC5jb20iLCJ1c2VySWQiOjEsImlhdCI6MTcyNzIwNjYyNywiZXhwIjoxNzI3MjkzMDI3fQ.Y56hz20bZdBqC9XzxMJwR-
+
+####
+GET  http://localhost:3000/auth/test
